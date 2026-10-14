@@ -220,7 +220,7 @@ wb.calculation = CalcProperties(fullCalcOnLoad=True)
 # =====================================================================
 ws = wb.active
 ws.title = "Portada"
-A = [30, 22, 22, 22, 22]
+A = [30, 44.44140625, 22, 22, 22]
 ancho(ws, A)
 f = titulo(ws, "Plan de Pruebas Automatizadas – Sitio web Bon-bonite v1",
            "Proceso de pruebas desde cero · Automatización de 3 escenarios con Serenity BDD + Screenplay", 5)
@@ -233,6 +233,7 @@ f = ficha(ws, f, [
     ("Fecha de ejecución", fecha_ejecucion),
     ("Proyecto de automatización", "bonbonite-automation/ (Maven · Java 17+ · Serenity BDD 4.2.1 · Cucumber 7 · Selenium 4)"),
     ("Reporte de ejecución", r"bonbonite-automation\target\site\serenity\index.html  ·  capturas en la carpeta evidencias\ "),
+    ("Repositorio", "https://github.com/C7julios/Automation_Qvision"),
 ], 5, A)
 
 f = seccion(ws, f, "Resumen de la ejecución", 5)
@@ -269,7 +270,6 @@ f = tabla(ws, f, ["Hoja", "Contenido"], [
     ["Esc2 - Modificar datos", "b) Solución del escenario 2 (misma estructura)."],
     ["Esc3 - Compra", "b) Solución del escenario 3 (misma estructura)."],
     ["Hallazgos", "Observaciones y posibles defectos detectados durante el diseño y la ejecución."],
-    ["Mejoras v2", "Asesoría para la segunda versión del sitio orientada a los dolores de cada área."],
 ], A, merges={1: 4})
 
 # =====================================================================
@@ -568,34 +568,6 @@ f = tabla(ws, f, ["ID", "Módulo", "Descripción", "Severidad", "Tipo", "Recomen
                      "recursos que se cargan después (la página incluye contenido multimedia y un feed de Instagram).",
      "Media", "Rendimiento", "Medir la página con Lighthouse o PageSpeed para identificar los recursos lentos y aplicarles carga diferida (lazy loading)."],
 ], A)
-
-# =====================================================================
-# Mejoras v2
-# =====================================================================
-ws = wb.create_sheet("Mejoras v2")
-A = [28, 55, 55]
-ancho(ws, A)
-f = titulo(ws, "Asesoría para la versión 2 del sitio web", "Cómo abordar las mejoras para beneficiar a las áreas de la empresa", 3)
-f = tabla(ws, f, ["Área", "Dolor actual (v1 y aplicaciones aisladas)", "Mejora propuesta para la v2"], [
-    ["Mercadeo y Ventas", "Información de clientes y ventas en aplicaciones separadas; poca trazabilidad de campañas.",
-     "CRM integrado al sitio (clientes, newsletter, carritos abandonados), tablero de ventas por categoría/canal y cupones gestionados desde un solo lugar."],
-    ["Costos", "Costos calculados manualmente y desconectados del precio publicado.",
-     "Integrar el maestro de productos con costos (ERP) para calcular márgenes por referencia y alertar precios por debajo del costo (p. ej. en Outlet)."],
-    ["Producción y logística", "Inventario y despachos en hojas o apps aisladas; productos agotados visibles.",
-     "Sincronizar inventario en tiempo real (API WooCommerce ↔ ERP), integración con transportadoras, cálculo automático del envío por ciudad y seguimiento del pedido en Mi cuenta."],
-    ["Facturación", "Facturas generadas manualmente a partir de los pedidos.",
-     "Facturación electrónica DIAN automática al confirmar el pago, con los datos de facturación del checkout."],
-    ["Contabilidad", "Registro manual de ventas, pagos y bonos de regalo.",
-     "Conciliación automática de pagos de la pasarela y causación contable de ventas, devoluciones, créditos y bonos de regalo."],
-    ["Calidad (transversal)", "Sin pruebas ni ambiente de pruebas.",
-     "Pipeline CI/CD que ejecute esta suite en cada despliegue a staging, pruebas de API y de rendimiento antes de producción, y ampliar la automatización a todos los módulos de la matriz."],
-], A)
-f = ficha(ws, f, [
-    ("Forma de abordarlo", "1) Levantar en talleres con cada director los procesos y dolores (as-is). 2) Priorizar con matriz valor/esfuerzo. "
-                           "3) Definir una arquitectura de integración (ERP como fuente única de productos, inventario, costos y facturación, "
-                           "con el sitio conectado por API). 4) Entregar en incrementos (MVP: inventario + facturación electrónica) con "
-                           "criterios de aceptación en Gherkin que alimenten directamente la automatización."),
-], 3, A)
 
 # Formato de impresión
 for hoja in wb.worksheets:
