@@ -336,7 +336,7 @@ f = ficha(ws, f, [
                                             "datos correctos no hay entrega y sin compra no hay venta. Cubren lo que pide el caso: registro exitoso, "
                                             "modificación de datos y compra de producto."),
     ("Manejo de datos de prueba", "Datos dinámicos generados en cada ejecución (Datafaker): cédula única de 10 dígitos que empieza por 9 y "
-                                  "correo qa.auto.<timestamp>@mailinator.com para identificar las cuentas de la automatización. "
+                                  "correo qa.auto.<timestamp>@carlosmail.com para identificar las cuentas de la automatización. "
                                   "El producto no está quemado: se elige el primero de la categoría con talla en inventario."),
     ("Estabilidad", "Esperas explícitas (WaitUntil / WebDriverWait), sin XPath absolutos, localizadores por id/name/clases funcionales, "
                     "manejo del banner de cookies y de los selects con select2, escenarios independientes entre sí (cada uno crea su usuario)."),
@@ -402,7 +402,7 @@ ESCENARIOS = [
         "prioridad": "Alta", "tipo": "Funcional E2E – camino feliz",
         "precondiciones": "• Sitio disponible.\n• Usuario no autenticado.\n• Cédula y correo no registrados previamente.",
         "datos": "Generados en cada ejecución (GeneradorDatos):\n• Nombres: Laura · Apellidos: aleatorio\n• Cédula: 10 dígitos únicos que empiezan por 9\n"
-                 "• Correo: qa.auto.<timestamp>@mailinator.com\n• Contraseña: QaAuto#<timestamp>\n• Autorización de tratamiento de datos: marcada",
+                 "• Correo: qa.auto.<timestamp>@carlosmail.com\n• Contraseña: QaAuto#<timestamp>\n• Autorización de tratamiento de datos: marcada",
         "esperado": "El usuario queda registrado y autenticado: ve el panel de Mi cuenta con el saludo \"Hola, Laura.\" y el menú de la cuenta muestra \"Cerrar Sesión\".",
         "esperados_pasos": [
             "Se muestra la página Mi cuenta con los formularios de ingreso y registro.",
@@ -563,6 +563,10 @@ f = tabla(ws, f, ["ID", "Módulo", "Descripción", "Severidad", "Tipo", "Recomen
      "Baja", "Usabilidad / negocio", "Marcar \"Agotado\" en la tarjeta del listado u ocultar productos sin inventario."],
     ["H-04", "Ambiente", "No existe un ambiente de pruebas; la automatización crea usuarios reales en producción y no puede confirmar pedidos.",
      "Media", "Proceso", "Habilitar un ambiente de staging con pasarela en modo sandbox para cubrir el pago de punta a punta."],
+    ["H-05", "Home", "La página de inicio tarda más de un minuto en terminar de cargar (evento load); en una ejecución superó los "
+                     "3 minutos y el navegador agotó su tiempo de espera. El HTML llega en menos de 1 s, así que la demora está en los "
+                     "recursos que se cargan después (la página incluye contenido multimedia y un feed de Instagram).",
+     "Media", "Rendimiento", "Medir la página con Lighthouse o PageSpeed para identificar los recursos lentos y aplicarles carga diferida (lazy loading)."],
 ], A)
 
 # =====================================================================

@@ -28,7 +28,7 @@ public class CerrarSesion implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(AbrirMenuCuenta.delEncabezado());
         // Se usa el mismo enlace "Cerrar Sesión" (con el nonce de WordPress) pero redirigiendo a Mi cuenta en lugar
-        // del home: el home carga videos y feeds pesados que demoran más de un minuto el evento load del navegador.
+        // del home: el home tarda más de un minuto en disparar el evento load del navegador (contenido multimedia pesado).
         String enlace = ENLACE_CERRAR_SESION.resolveFor(actor).getAttribute("href")
                 .replaceAll("redirect_to=[^&]*", "redirect_to=" + URLEncoder.encode(MI_CUENTA, StandardCharsets.UTF_8));
         actor.attemptsTo(

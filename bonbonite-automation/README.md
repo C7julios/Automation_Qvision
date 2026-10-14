@@ -50,7 +50,7 @@ src/test/resources
 ```
 
 ## Consideraciones
-- **Ambiente productivo**: cada ejecución crea usuarios reales con correo `qa.auto.<timestamp>@mailinator.com`
+- **Ambiente productivo**: cada ejecución crea usuarios reales con correo `qa.auto.<timestamp>@carlosmail.com`
   y cédula única que empieza por 9. Se recomienda un ambiente de pruebas (staging) para ejecuciones frecuentes.
 - **La compra no se confirma**: el escenario 3 llega hasta el formulario de facturación/envío diligenciado y valida
   el resumen del pedido, sin pulsar "Registrar Orden", para no generar pedidos reales.

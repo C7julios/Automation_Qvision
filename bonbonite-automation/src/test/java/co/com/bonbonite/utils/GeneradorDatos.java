@@ -21,7 +21,7 @@ public final class GeneradorDatos {
         long marca = System.currentTimeMillis();
         String cedula = "9" + String.valueOf(marca).substring(4); // 10 dígitos, único por ejecución
         String apellido = FAKER.name().lastName().replaceAll("[^A-Za-zÁÉÍÓÚáéíóúÑñ ]", "");
-        String email = "qa.auto." + marca + "@mailinator.com";
+        String email = "qa.auto." + marca + "@carlosmail.com";
         return new Usuario(cedula, nombre, apellido, email, "QaAuto#" + marca);
     }
 

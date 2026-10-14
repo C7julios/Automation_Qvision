@@ -39,10 +39,9 @@ public class SeleccionarProducto implements Task {
     @Override
     @Step("{0} selecciona un producto disponible de la categoría #categoria")
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(
-                Open.url("https://www.bon-bonite.com/"),
-                WaitUntil.the(MENU_CATEGORIA.of(categoria), isPresent()).forNoMoreThan(20).seconds()
-        );
+        // El menú de categorías está en el encabezado de todas las páginas, así que se usa el de la página actual.
+        // No se abre el home: su evento load puede demorar varios minutos y agotar el tiempo de espera de Selenium.
+        actor.attemptsTo(WaitUntil.the(MENU_CATEGORIA.of(categoria), isPresent()).forNoMoreThan(20).seconds());
         String urlCategoria = MENU_CATEGORIA.of(categoria).resolveFor(actor).getAttribute("href");
         actor.attemptsTo(
                 Open.url(urlCategoria),
