@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Genera Plan_Pruebas_BonBonite.xlsx a partir de los features y del reporte JSON de Serenity."""
+"""Genera PTP_Carlos_Sanchez_13102026.xlsx a partir de los features y del reporte JSON de Serenity."""
 import glob
 import json
 import os
@@ -19,7 +19,7 @@ RAIZ = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.
 PROYECTO = os.path.join(RAIZ, "bonbonite-automation")
 REPORTE = os.path.join(PROYECTO, "target", "site", "serenity")
 EVIDENCIAS = os.path.join(RAIZ, "evidencias")
-SALIDA = os.path.join(RAIZ, "Plan_Pruebas_BonBonite.xlsx")
+SALIDA = os.path.join(RAIZ, "PTP_Carlos_Sanchez_13102026.xlsx")
 
 # ---------- estilos ----------
 FUENTE = "Arial"
@@ -384,7 +384,7 @@ f = tabla(ws, f, ["Fase", "Actividades", "Duración estimada"], [
     ["5. Cierre", "Entrega de documento, código, reporte y recomendaciones para la v2", "1 día"],
 ], A, merges={1: 3})
 f = tabla(ws, f, ["Entregable", "Ubicación"], [
-    ["Documento de pruebas (este archivo)", "Plan_Pruebas_BonBonite.xlsx"],
+    ["Documento de pruebas (este archivo)", "PTP_Carlos_Sanchez_13102026.xlsx"],
     ["Código de automatización", "bonbonite-automation/ (README.md con instrucciones)"],
     ["Reporte de ejecución Serenity", "bonbonite-automation/target/site/serenity/index.html (se genera al ejecutar)"],
     ["Evidencias", "evidencias/ (capturas de cada escenario)"],

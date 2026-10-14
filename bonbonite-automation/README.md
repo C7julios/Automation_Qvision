@@ -22,7 +22,7 @@ mvn clean verify -Dheadless.mode=true         # sin abrir el navegador
 Reporte: `target/site/serenity/index.html`
 
 ## Documento de pruebas (Excel)
-Después de ejecutar las pruebas, regenera `../Plan_Pruebas_BonBonite.xlsx` y las capturas de `../evidencias/`
+Después de ejecutar las pruebas, regenera `../PTP_Carlos_Sanchez_13102026.xlsx` y las capturas de `../evidencias/`
 con los resultados de esa ejecución (requiere Python 3 con `openpyxl` y `pillow`):
 ```bash
 pip install openpyxl pillow
